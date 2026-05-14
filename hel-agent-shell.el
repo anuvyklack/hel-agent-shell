@@ -23,6 +23,21 @@
 (require 'hel-commands)
 (require 'agent-shell)
 
+;;; Config
+
+(add-hook 'agent-shell-viewport-edit-mode-hook
+          'hel-agent-shell-viewport-edit-mode-h)
+
+(defun hel-agent-shell-viewport-edit-mode-h ()
+  (unless (assq ?` hel-surround-alist)
+    (push '(?` :insert (lambda ()
+                         ;; If selection is linewise enclose it in tripple
+                         ;; backticks, otherwise -- in sinlge one.
+                         (if (hel-linewise-selection-p)
+                             '("```\n" . "\n```")
+                           '("`" . "`"))))
+          hel-surround-alist)))
+
 ;;; Keybindings
 
 (defvar-keymap hel-agent-shell-local-leader-map

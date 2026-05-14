@@ -65,6 +65,9 @@ The viewport buffer opens in Hel Motion state. Press =i= to enter Normal state
 | =C-r=        | history                            |
 | =p=          | paste text or image from clipboard |
 
+- =ms`= :: If selection is linewise enclose it in tripple =```=, otherwise — in
+  single =`=.
+
 ** Customization
 
 To configure =Enter= to insert a newline in Insert state and send the prompt
