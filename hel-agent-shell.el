@@ -122,17 +122,17 @@
 
 ;;; Commands
 
-;; C-j or ]]
+;; C-j or ]] or zj
 (defun hel-agent-shell-next-item ()
   "Go to next item."
   (declare (modes agent-shell-mode))
   (interactive)
-  (let* ((prompt-pos (save-mark-and-excursion
+  (let* ((prompt-pos (save-excursion
                        (when (comint-next-prompt 1)
                          (point))))
-         (block-pos (save-mark-and-excursion
+         (block-pos (save-excursion
                       (agent-shell-ui-forward-block)))
-         (button-pos (save-mark-and-excursion
+         (button-pos (save-excursion
                        (agent-shell-next-permission-button)))
          (next-pos (->> (list prompt-pos
                               block-pos
@@ -145,22 +145,21 @@
       (when (eq next-pos prompt-pos)
         (comint-skip-prompt)))))
 
-;; C-k or [[
+;; C-k or [[ or zk
 (defun hel-agent-shell-previous-item ()
   "Go to previous item."
   (declare (modes agent-shell-mode))
   (interactive)
   (let* ((current-pos (point))
-         (prompt-pos (save-mark-and-excursion
-                       (when-let* (((comint-next-prompt -1))
-                                   (pos (point))
+         (prompt-pos (save-excursion
+                       (when-let* ((pos (comint-next-prompt -1))
                                    ((< pos current-pos)))
                          pos)))
-         (block-pos (save-mark-and-excursion
+         (block-pos (save-excursion
                       (when-let* ((pos (agent-shell-ui-backward-block))
                                   ((< pos current-pos)))
                         pos)))
-         (button-pos (save-mark-and-excursion
+         (button-pos (save-excursion
                        (when-let* ((pos (agent-shell-previous-permission-button))
                                    ((< pos current-pos)))
                          pos)))
