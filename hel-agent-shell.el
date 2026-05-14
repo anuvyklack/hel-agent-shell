@@ -39,7 +39,7 @@
   "P"     '("pending request remove" agent-shell-remove-pending-request)
   "t"     '("token usage" . agent-shell-show-usage))
 
-(defvar-keymap agent-shell-viewport-view-local-leader-map
+(defvar-keymap hel-agent-shell-viewport-view-local-leader-map
   :doc "<local-leader> in agent-shell viewport mode."
   :parent hel-agent-shell-local-leader-map
   "<tab>" '("cycle session mode" . agent-shell-viewport-cycle-session-mode)
@@ -47,9 +47,9 @@
   "m"     '("set model" . agent-shell-viewport-set-session-model)
   "?"     '("help menu" . agent-shell-viewport-help-menu))
 
-(defvar-keymap agent-shell-viewport-edit-local-leader-map
+(defvar-keymap hel-agent-shell-viewport-edit-local-leader-map
   :doc "<local-leader> in agent-shell compose buffer."
-  :parent agent-shell-viewport-view-local-leader-map
+  :parent hel-agent-shell-viewport-view-local-leader-map
   ","   '("send prompt" . agent-shell-viewport-compose-send)
   "?"   '("help menu" . agent-shell-viewport-compose-help-menu))
 
@@ -84,7 +84,7 @@
   "[ [" 'agent-shell-viewport-previous-page
   "C-j" 'agent-shell-viewport-next-item
   "C-k" 'agent-shell-viewport-previous-item
-  ","    agent-shell-viewport-view-local-leader-map)
+  ","    hel-agent-shell-viewport-view-local-leader-map)
 
 (hel-keymap-set agent-shell-viewport-view-mode-map :state 'normal
   "<escape>" 'hel-motion-state
@@ -99,7 +99,7 @@
   ;;
   "Z Z" 'agent-shell-viewport-compose-send
   "Z Q" 'agent-shell-viewport-compose-cancel
-  ","    agent-shell-viewport-edit-local-leader-map)
+  ","    hel-agent-shell-viewport-edit-local-leader-map)
 
 (hel-keymap-set agent-shell-diff-mode-map
   "C-j" 'diff-hunk-next
