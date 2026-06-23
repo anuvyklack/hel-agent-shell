@@ -87,9 +87,9 @@
 (hel-keymap-set agent-shell-mode-map :state 'insert
   "C-w" 'hel-delete-backward-word)
 
-(hel-set-initial-state 'agent-shell-viewport-view-mode 'motion)
+(hel-set-initial-state 'agent-shell-viewport-view-mode 'emacs)
 
-(hel-keymap-set agent-shell-viewport-view-mode-map :state 'motion
+(hel-keymap-set agent-shell-viewport-view-mode-map :state 'emacs
   "i"   'hel-normal-state
   "h"   'left-char
   "j"   'next-line
@@ -106,7 +106,7 @@
   ","    hel-agent-shell-viewport-view-local-leader-map)
 
 (hel-keymap-set agent-shell-viewport-view-mode-map :state 'normal
-  "<escape>" 'hel-motion-state
+  "<escape>" 'hel-emacs-state
   "q"        'bury-buffer)
 
 (hel-keymap-set agent-shell-viewport-edit-mode-map :state 'normal
